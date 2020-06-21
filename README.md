@@ -7,6 +7,7 @@ This is the official code release of paper [Inverse Rendering for Complex Indoor
 Insverse rendering results of the models trained on the new datasets are shown below. 
 ![](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/github/inverseRendering.png)
 Scene editing applications results on real images are shown below, including results on object insertion and material editing.
-![hehe](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/github/objectInsertion.png)
+![](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/github/objectInsertion.png)
+![](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/github/materialEditing.png)
 Models trained on the new dataset achieve comparable performances compared with our prior models. Quantitaive comparisons are listed below.
 
