@@ -18,8 +18,9 @@ The trained models can be downloaded from the [link](http://cseweb.ucsd.edu/~vis
 ## Train and test on the synthetic dataset
 To train the full models on the synthetic dataset, please run the following commands.
 * `python trainBRDF.py --cuda --cascadeLevel 0 --dataRoot DATA`: Train the first cascade of MGNet. 
-* ``
-*
+* `python trainLight.py --cuda --cascadeLevel 0 --dataRoot DATA`: Train the first cascade of LightNet
+* `python outputBRDFLight.py --cuda --dataRoot DATA`: Output the intermediate predictions, which will be used to train the second cascade. 
+* `python`
 To test the full models, pleas
 
 ## Train and test on IIW dataset
