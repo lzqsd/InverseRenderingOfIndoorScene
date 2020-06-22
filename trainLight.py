@@ -16,7 +16,7 @@ import wrapperBRDFLight as wcg
 
 parser = argparse.ArgumentParser()
 # The locationi of training set
-parser.add_argument('--dataRoot', default='/siggraphasia20dataset/code/Routine/DatasetCreation/', help='path to input images')
+parser.add_argument('--dataRoot', default=None, help='path to input images')
 parser.add_argument('--experimentBRDF', default=None, help='path to the model for BRDF prediction')
 parser.add_argument('--experiment', default=None, help='the path to store samples and models')
 # The basic training setting
@@ -80,7 +80,7 @@ elif opt.cascadeLevel == 1:
     opt.nepoch = opt.nepoch1
     opt.batchSize = opt.batchSize1
     opt.imHeight, opt.imWidth = opt.imHeight1, opt.imWidth1
-    opt.nepochBRDF = opt.nepochBRDF1 
+    opt.nepochBRDF = opt.nepochBRDF1
 
 
 if opt.experimentBRDF is None:
@@ -184,7 +184,7 @@ opWeightDecoder = optim.Adam(weightDecoder.parameters(), lr=1e-4 * lr_scale, bet
 
 ####################################
 brdfDataset = dataLoader.BatchLoader( opt.dataRoot, isAllLight = True,
-        imWidth = opt.imWidth, imHeight = opt.imHeight, isLight = True, 
+        imWidth = opt.imWidth, imHeight = opt.imHeight, isLight = True,
         cascadeLevel = opt.cascadeLevel, SGNum = opt.SGNum )
 brdfLoader = DataLoader(brdfDataset, batch_size = opt.batchSize, num_workers =
         16, shuffle = True )
@@ -220,14 +220,14 @@ for epoch in list(range(0, opt.nepoch) ):
         output2env, renderLayer, offset )
 
         albedoPred, albedoErr = albedoPair[0], albedoPair[1]
-        albedoBatch = albedoPair[2] 
+        albedoBatch = albedoPair[2]
         normalPred, normalErr = normalPair[0], normalPair[1]
         normalBatch = normalPair[2]
-        roughPred, roughErr = roughPair[0], roughPair[1] 
+        roughPred, roughErr = roughPair[0], roughPair[1]
         roughBatch = roughPair[2]
         depthPred, depthErr = depthPair[0], depthPair[1]
         depthBatch = depthPair[2]
-        envmapsPredScaledImage, reconstErr = envmapsPair[0], envmapsPair[1] 
+        envmapsPredScaledImage, reconstErr = envmapsPair[0], envmapsPair[1]
         envmapsBatch = envmapsPair[2]
         renderedImPred, renderErr = renderPair[0], renderPair[1]
         imBatch = renderPair[2]
@@ -302,7 +302,7 @@ for epoch in list(range(0, opt.nepoch) ):
             utils.writeNpErrToFile('renderAccu', np.mean(renderErrsNpList[j-999:j+1, :], axis=0), trainingLog, epoch, j )
 
 
-        if j == 1 or j% 2000 == 0: 
+        if j == 1 or j% 2000 == 0:
             # Save the groundtruth results
             vutils.save_image( ( (albedoBatch ) ** (1.0/2.2) ).data,
                     '{0}/{1}_albedoGt_{2}.png'.format(opt.experiment, j, 0) )

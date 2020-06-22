@@ -19,7 +19,7 @@ import scipy.io as io
 
 parser = argparse.ArgumentParser()
 # The locationi of training set
-parser.add_argument('--dataRoot', default='/siggraphasia20dataset/code/Routine/DatasetCreation/', help='path to input images')
+parser.add_argument('--dataRoot', default=None, help='path to input images')
 parser.add_argument('--IIWRoot', default='/siggraphasia20dataset/IIW/iiw-dataset/data', help='path to the IIW dataset')
 parser.add_argument('--experimentBRDF', default=None, help='path to the model for BRDF prediction')
 parser.add_argument('--experiment', default=None, help='the path to store samples and models')
@@ -81,7 +81,7 @@ roughDecoder = models.decoder0(mode=2 )
 depthDecoder = models.decoder0(mode=4 )
 
 #########################################
-encoder.load_state_dict(torch.load('{0}/encoder{1}_{2}.pth'.format(opt.experimentBRDF, 
+encoder.load_state_dict(torch.load('{0}/encoder{1}_{2}.pth'.format(opt.experimentBRDF,
     0, opt.nepochBRDF-1) ).state_dict() )
 albedoDecoder.load_state_dict(torch.load('{0}/albedo{1}_{2}.pth'.format(opt.experimentBRDF,
     0, opt.nepochBRDF-1) ).state_dict() )

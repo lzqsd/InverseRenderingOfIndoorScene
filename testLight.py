@@ -16,10 +16,10 @@ import wrapperBRDFLight as wcg
 
 parser = argparse.ArgumentParser()
 # The locationi of training set
-parser.add_argument('--dataRoot', default='/eccv20dataset/DatasetNew_test', help='path to input images')
+parser.add_argument('--dataRoot', default=None, help='path to input images')
 parser.add_argument('--experimentBRDF', default=None, help='path to the model for BRDF prediction')
 parser.add_argument('--experiment', default=None, help='the path to store samples and models')
-parser.add_argument('--testRoot', default=None, help='the path to store the test results') 
+parser.add_argument('--testRoot', default=None, help='the path to store the test results')
 # The basic training setting
 parser.add_argument('--nepochBRDF0', type=int, default=14, help='the number of epochs for BRDF prediction')
 parser.add_argument('--nepochBRDF1', type=int, default=7, help='the number of epochs for BRDF prediction')
@@ -222,14 +222,14 @@ for i, dataBatch in enumerate(brdfLoader):
     output2env, renderLayer, 1e-3 )
 
     albedoPred, albedoErr = albedoPair[0], albedoPair[1]
-    albedoBatch = albedoPair[2] 
+    albedoBatch = albedoPair[2]
     normalPred, normalErr = normalPair[0], normalPair[1]
     normalBatch = normalPair[2]
-    roughPred, roughErr = roughPair[0], roughPair[1] 
+    roughPred, roughErr = roughPair[0], roughPair[1]
     roughBatch = roughPair[2]
     depthPred, depthErr = depthPair[0], depthPair[1]
     depthBatch = depthPair[2]
-    envmapsPredScaledImage, reconstErr = envmapsPair[0], envmapsPair[1] 
+    envmapsPredScaledImage, reconstErr = envmapsPair[0], envmapsPair[1]
     envmapsBatch = envmapsPair[2]
     renderedImPred, renderErr = renderPair[0], renderPair[1]
     imBatch = renderPair[2]
@@ -290,7 +290,7 @@ for i, dataBatch in enumerate(brdfLoader):
         vutils.save_image( ( (imBatch )**(1.0/2.2) ).data,
             '{0}/{1}_im.png'.format(opt.experiment, j) )
 
-        utils.writeEnvToFile(envmapsBatch, 0, '{0}/{1}_envmapPred.png'.format(opt.experiment, j) ) 
+        utils.writeEnvToFile(envmapsBatch, 0, '{0}/{1}_envmapPred.png'.format(opt.experiment, j) )
 
         # Save the predicted results
         vutils.save_image( ( (albedoPred ) ** (1.0/2.2) ).data,

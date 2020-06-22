@@ -16,7 +16,7 @@ import os.path as osp
 
 parser = argparse.ArgumentParser()
 # The locationi of training set
-parser.add_argument('--dataRoot', default='/eccv20dataset/DatasetNew_test/', help='path to images')
+parser.add_argument('--dataRoot', default=None,  help='path to images')
 parser.add_argument('--experimentBRDF', default=None, help='the path to store samples and models')
 parser.add_argument('--experimentBS', default=None, help='the path to store samples and models')
 parser.add_argument('--testRoot', default=None, help='the path to save the testing errors')

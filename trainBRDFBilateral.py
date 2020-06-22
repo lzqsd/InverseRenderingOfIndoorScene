@@ -12,12 +12,12 @@ import dataLoader
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import torch.nn.functional as F
-import BilateralLayer as bs 
-import os.path as osp 
+import BilateralLayer as bs
+import os.path as osp
 
 parser = argparse.ArgumentParser()
 # The locationi of training set
-parser.add_argument('--dataRoot', default='/siggraphasia20dataset/code/Routine/DatasetCreation/', help='path to images' )
+parser.add_argument('--dataRoot', default=None, help='path to images' )
 parser.add_argument('--experimentBRDF', default=None, help='path to load the trained model' )
 parser.add_argument('--experiment', default=None, help='the path to store samples and models' )
 # The basic training setting
@@ -72,7 +72,7 @@ if opt.experimentBRDF is None:
             (opt.cascadeLevel, opt.imWidth, opt.imHeight )
 
 if opt.experiment is None:
-    opt.experiment = opt.experimentBRDF.replace('check', 'checkBs') 
+    opt.experiment = opt.experimentBRDF.replace('check', 'checkBs')
 
 opt.experiment = osp.join(curDir, opt.experiment )
 opt.experimentBRDF = osp.join(curDir, opt.experimentBRDF )

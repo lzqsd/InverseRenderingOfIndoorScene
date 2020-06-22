@@ -15,7 +15,7 @@ import torch.nn.functional as F
 
 parser = argparse.ArgumentParser()
 # The locationi of training set
-parser.add_argument('--dataRoot', default='/siggraphasia20dataset/code/Routine/DatasetCreation/', help='path to input images')
+parser.add_argument('--dataRoot', default=None, help='path to input images')
 parser.add_argument('--experiment', default=None, help='the path to store samples and models')
 # The basic training setting
 parser.add_argument('--nepoch0', type=int, default=14, help='the number of epochs for training')
@@ -41,7 +41,7 @@ parser.add_argument('--roughWeight', type=float, default=0.5, help='the weight f
 parser.add_argument('--depthWeight', type=float, default=0.5, help='the weight for depth component')
 
 # Cascae Level
-parser.add_argument('--cascadeLevel', type=int, default=1, help='the casacade level')
+parser.add_argument('--cascadeLevel', type=int, default=0, help='the casacade level')
 
 # The detail network setting
 opt = parser.parse_args()
@@ -63,7 +63,7 @@ elif opt.cascadeLevel == 1:
     opt.imHeight, opt.imWidth = opt.imHeight1, opt.imWidth1
 
 if opt.experiment is None:
-    opt.experiment = 'check_cascade%d_w%d_h%d' % (opt.cascadeLevel, 
+    opt.experiment = 'check_cascade%d_w%d_h%d' % (opt.cascadeLevel,
             opt.imWidth, opt.imHeight )
 os.system('mkdir {0}'.format(opt.experiment) )
 os.system('cp *.py %s' % opt.experiment )
@@ -130,10 +130,10 @@ opDepth = optim.Adam(depthDecoder.parameters(), lr=1e-4 * lr_scale, betas=(0.5, 
 
 
 ####################################
-brdfDataset = dataLoader.BatchLoader( opt.dataRoot, 
+brdfDataset = dataLoader.BatchLoader( opt.dataRoot,
         imWidth = opt.imWidth, imHeight = opt.imHeight,
         cascadeLevel = opt.cascadeLevel )
-brdfLoader = DataLoader(brdfDataset, batch_size = opt.batchSize, 
+brdfLoader = DataLoader(brdfDataset, batch_size = opt.batchSize,
         num_workers = 8, shuffle = True )
 
 j = 0
@@ -206,7 +206,7 @@ for epoch in list(range(opt.epochIdFineTune+1, opt.nepoch) ):
             envRow, envCol = diffusePreBatch.size(2), diffusePreBatch.size(3)
             imBatchSmall = F.adaptive_avg_pool2d(imBatch, (envRow, envCol) )
             diffusePreBatch, specularPreBatch = models.LSregressDiffSpec(
-                    diffusePreBatch, specularPreBatch, imBatchSmall, 
+                    diffusePreBatch, specularPreBatch, imBatchSmall,
                     diffusePreBatch, specularPreBatch )
 
             if diffusePreBatch.size(2) < opt.imHeight or diffusePreBatch.size(3) < opt.imWidth:
@@ -245,7 +245,7 @@ for epoch in list(range(opt.epochIdFineTune+1, opt.nepoch) ):
         roughPred = roughDecoder(imBatch, x1, x2, x3, x4, x5, x6)
         depthPred = 0.5 * (depthDecoder(imBatch, x1, x2, x3, x4, x5, x6 ) + 1)
 
-        albedoBatch = segBRDFBatch * albedoBatch 
+        albedoBatch = segBRDFBatch * albedoBatch
         albedoPred = models.LSregress(albedoPred * segBRDFBatch.expand_as(albedoPred ),
                 albedoBatch * segBRDFBatch.expand_as(albedoBatch), albedoPred )
         albedoPred = torch.clamp(albedoPred, 0, 1)

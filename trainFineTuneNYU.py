@@ -8,7 +8,7 @@ import os
 import models
 import torchvision.utils as vutils
 import utils
-import nyuDataLoader as dataLoader_nyu 
+import nyuDataLoader as dataLoader_nyu
 import dataLoader as dataLoader_ours
 import torch.nn as nn
 from torch.utils.data import DataLoader
@@ -20,8 +20,8 @@ import os.path as osp
 
 parser = argparse.ArgumentParser()
 # The locationi of training set
-parser.add_argument('--dataRoot', default='/siggraphasia20dataset/code/Routine/DatasetCreation/', help='path to input images')
-parser.add_argument('--NYURoot', default='/siggraphasia20dataset/NYU/', help='path to the NYU dataset')
+parser.add_argument('--dataRoot', default=None, help='path to input images')
+parser.add_argument('--NYURoot', default=None, help='path to the NYU dataset')
 parser.add_argument('--experimentBRDF', default=None, help='path to the model for BRDF prediction')
 parser.add_argument('--experiment', default=None, help='the path to store samples and models')
 # The basic training setting
@@ -171,7 +171,7 @@ for epoch in list(range(0, opt.nepoch) ):
         opDepth.zero_grad()
 
         albedoPair, normalPair, roughPair, depthPair \
-        = wcg.wrapperBRDF(dataBatch, opt, encoder, 
+        = wcg.wrapperBRDF(dataBatch, opt, encoder,
                 albedoDecoder, normalDecoder, roughDecoder, depthDecoder )
 
         albedoPred, albedoErr = albedoPair[0], albedoPair[1]
@@ -190,7 +190,7 @@ for epoch in list(range(0, opt.nepoch) ):
         opNormal.step()
         opRough.step()
         opDepth.step()
-        
+
         # Output training error
         utils.writeErrToScreen('albedo', [albedoErr], epoch, j)
         utils.writeErrToScreen('normal', [normalErr], epoch, j)
@@ -212,7 +212,7 @@ for epoch in list(range(0, opt.nepoch) ):
             utils.writeNpErrToScreen('normalAccu', np.mean(normalErrsNpList[1:j+1, :], axis=0), epoch, j )
             utils.writeNpErrToScreen('roughAccu', np.mean(roughErrsNpList[1:j+1, :], axis=0), epoch, j )
             utils.writeNpErrToScreen('depthAccu', np.mean(depthErrsNpList[1:j+1, :], axis=0), epoch, j )
-            
+
             utils.writeNpErrToFile('albedoAccu', np.mean(albedoErrsNpList[1:j+1, :], axis=0), trainingLog, epoch, j)
             utils.writeNpErrToFile('normalAccu', np.mean(normalErrsNpList[1:j+1, :], axis=0), trainingLog, epoch, j)
             utils.writeNpErrToFile('roughAccu', np.mean(roughErrsNpList[1:j+1, :], axis=0), trainingLog, epoch, j)
@@ -222,7 +222,7 @@ for epoch in list(range(0, opt.nepoch) ):
             utils.writeNpErrToScreen('normalAccu', np.mean(normalErrsNpList[j-999:j+1, :], axis=0), epoch, j)
             utils.writeNpErrToScreen('roughAccu', np.mean(roughErrsNpList[j-999:j+1, :], axis=0), epoch, j)
             utils.writeNpErrToScreen('depthAccu', np.mean(depthErrsNpList[j-999:j+1, :], axis=0), epoch, j)
-            
+
             utils.writeNpErrToFile('albedoAccu', np.mean(albedoErrsNpList[j-999:j+1, :], axis=0), trainingLog, epoch, j)
             utils.writeNpErrToFile('normalAccu', np.mean(normalErrsNpList[j-999:j+1, :], axis=0), trainingLog, epoch, j)
             utils.writeNpErrToFile('roughAccu', np.mean(roughErrsNpList[j-999:j+1, :], axis=0), trainingLog, epoch, j)
@@ -250,9 +250,9 @@ for epoch in list(range(0, opt.nepoch) ):
         opNormal.zero_grad()
         opRough.zero_grad()
         opDepth.zero_grad()
-        
+
         albedoPair, normalPair, roughPair, depthPair \
-        = wnyu.wrapperNYU(NYUBatch, opt, encoder, 
+        = wnyu.wrapperNYU(NYUBatch, opt, encoder,
                 albedoDecoder, normalDecoder, roughDecoder, depthDecoder )
 
         albedoPred = albedoPair[0]

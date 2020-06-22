@@ -14,7 +14,7 @@ import torchvision.utils as vutils
 
 parser = argparse.ArgumentParser()
 # The locationi of testing set
-parser.add_argument('--dataRoot', default='/eccv20dataset/DatasetNew_test/', help='path to real image distorted by water')
+parser.add_argument('--dataRoot', default=None, help='path to real image distorted by water')
 parser.add_argument('--experiment', default=None, help='the path to store samples and models')
 parser.add_argument('--testRoot', default=None, help='the path to save the testing errors')
 # The basic training setting
