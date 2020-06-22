@@ -33,12 +33,22 @@ To test the full models on the synthetic dataset, please run the commands
 ## Train and test on IIW dataset
 To train on the IIW dataset, please first train on the synthetic dataset and then run the commands:
 * `python trainFineTuneIIW.py --cuda --dataRoot DATA --IIWRoot IIW`: Fine-tune the network on the IIW dataset.
+
 To test the network on the IIW dataset, please run the commands
 * `bash runIIW.sh`: Output the predictions for the IIW dataset.
 * `python CompareWHDR.py`: Compute the WHDR on the predictions.
-Please remember modify `runIIW.sh` and `CompareWHDR.py` by fixing the dataset path. 
+Please fix the data route in `runIIW.sh` and `CompareWHDR.py`. 
 
 ## Train and test on NYU dataset
+To train on the BYU dataset, please first train on the synthetic dataset and then run the commands:
+* `python trainFineTuneNYU.py --cuda --dataRoot DATA --NYURoot NYU`: Fine-tune the network on the NYU dataset.
+* `python trainFineTuneNYU_casacde1.py --cuda --dataRoot DATA --NYURoot NYU`: Fine-tune the network on the NYU dataset.
+
+To test the network on the NYU dataset, please run the commands
+* `bash runNYU.sh`: Output the predictions for the NYU dataset.
+* `python CompareNormal.py`: Compute the normal error on the predictions.
+* `python CompareDepth.py`: Compute the depth error on the predictions.
+Please remember fix the data route in `runNYU.sh`, `CompareNormal.py` and `CompareDepth.py`.
 
 ## Train and test on Garon19 [2] dataset 
 
