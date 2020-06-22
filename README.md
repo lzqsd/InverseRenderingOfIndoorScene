@@ -30,7 +30,7 @@ To test the full models on the synthetic dataset, please run the commands
 * `python testLight.py --cuda --cascadeLevel 0 --dataRoot DATA`: Test the light predictions of the first cascade.
 * `python testLight.py --cuda --cascadeLevel 1 --dataRoot DATA`: Test the light predictions of the first cascade.
 
-## Train and test on IIW dataset
+## Train and test on IIW dataset for intrinsic decomposition
 To train on the IIW dataset, please first train on the synthetic dataset and then run the commands:
 * `python trainFineTuneIIW.py --cuda --dataRoot DATA --IIWRoot IIW`: Fine-tune the network on the IIW dataset.
 
@@ -40,7 +40,7 @@ To test the network on the IIW dataset, please run the commands
 
 Please fixing the data route in `runIIW.sh` and `CompareWHDR.py`. 
 
-## Train and test on NYU dataset
+## Train and test on NYU dataset for geometry prediction
 To train on the BYU dataset, please first train on the synthetic dataset and then run the commands:
 * `python trainFineTuneNYU.py --cuda --dataRoot DATA --NYURoot NYU`: Fine-tune the network on the NYU dataset.
 * `python trainFineTuneNYU_casacde1.py --cuda --dataRoot DATA --NYURoot NYU`: Fine-tune the network on the NYU dataset.
@@ -52,10 +52,10 @@ To test the network on the NYU dataset, please run the commands
 
 Please remember fixing the data route in `runNYU.sh`, `CompareNormal.py` and `CompareDepth.py`.
 
-## Train and test on Garon19 [2] dataset 
+## Train and test on Garon19 [2] dataset for object insertion
 There is no fine-tuning for the Garon19 dataset. To test the network, download the images from this [link](https://lvsn.github.io/fastindoorlight/). And then run `bash runReal20.sh`. Please remember fixing the data route in `runReal20.sh`.
 
-All object insertion results can be found from this [link](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/objectInsertion.zip). We will release our object insertion code soon. Please check out [project page](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/) for updates. 
+All object insertion results and comparisons can be found from this [link](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/objectInsertion.zip). We will release our object insertion code soon. Please check out [project page](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/) for updates. 
 
 ## Differences from the original 
 The current implementation has 3 major differences from the original CVPR20 implementation.
