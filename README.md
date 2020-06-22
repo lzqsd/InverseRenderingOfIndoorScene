@@ -16,8 +16,8 @@ Models trained on the new dataset achieve comparable performances compared with 
 The trained models can be downloaded from the [link](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/models.zip). To test the models, please copy the models to the same directory as the code and run the commands as shown below. 
 
 ## Train and test on the synthetic dataset
-To train the full models on the synthetic dataset, please run the following commands:
-* `hehe`
+To train the full models on the synthetic dataset, please run the following commands.
+* `python trainBRDF.py --cascadeLevel 0 --dataRoot DATA`: 
 * ``
 * ``
 *
