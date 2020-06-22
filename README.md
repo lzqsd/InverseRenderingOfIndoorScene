@@ -31,6 +31,12 @@ To test the full models on the synthetic dataset, please run the commands
 * `python testLight.py --cuda --cascadeLevel 1 --dataRoot DATA`: Test the light predictions of the first cascade.
 
 ## Train and test on IIW dataset
+To train on the IIW dataset, please first train on the synthetic dataset and then run the commands:
+* `python trainFineTuneIIW.py --cuda --dataRoot DATA --IIWRoot IIW`: Fine-tune the network on the IIW dataset.
+To test the network on the IIW dataset, please run the commands
+* `bash runIIW.sh`: Output the predictions for the IIW dataset.
+* `python CompareWHDR.py`: Compute the WHDR on the predictions.
+Please remember modify `runIIW.sh` and `CompareWHDR.py` by fixing the dataset path. 
 
 ## Train and test on NYU dataset
 
