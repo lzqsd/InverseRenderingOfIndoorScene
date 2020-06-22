@@ -24,8 +24,11 @@ To train the full models on the synthetic dataset, please run the commands
 * `python trainBRDF.py --cuda --cascadeLevel 1 --dataRoot DATA`: Train the first cascade of MGNet. 
 * `python trainLight.py --cuda --cascadeLevel 1 --dataRoot DATA`: Train the first cascade of LightNet.
 * `python trainBRDFBilateral.py --cuda --cascadeLevel 1 --dataRoot DATA`: Train the bilateral solvers.
+
 To test the full models on the synthetic dataset, please run the commands
-* ``
+* `python testBRDFBilateral.py --cuda --dataRoot DATA`: Test the BRDF and geometry predictions.
+* `python testLight.py --cuda --cascadeLevel 0 --dataRoot DATA`: Test the light predictions of the first cascade.
+* `python testLight.py --cuda --cascadeLevel 1 --dataRoot DATA`: Test the light predictions of the first cascade.
 
 ## Train and test on IIW dataset
 
@@ -34,9 +37,10 @@ To test the full models on the synthetic dataset, please run the commands
 ## Train and test on Garon19 [2] dataset 
 
 ## Differences from the original 
-The current implementation has 2 major differences from the original CVPR20 implementation.
+The current implementation has 3 major differences from the original CVPR20 implementation.
 * In the new models, we do not use spherical Gaussian parameters generated from optimization for supervision. That is mainly because the optimization proceess is time consuming and we have not finished that process yet. We will update the code once it is done.
 * The resolution of the second cascade is changed from 480x640 to 240x320. We find that the networks can generate smoother results with smaller resolution.
+* We remove the light source segmentation mask as input. It does not have a major impact on the final results.
 
 ## Reference 
 [1] Dai, A., Chang, A. X., Savva, M., Halber, M., Funkhouser, T., & Nießner, M. (2017). Scannet: Richly-annotated 3d reconstructions of indoor scenes. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 5828-5839).
