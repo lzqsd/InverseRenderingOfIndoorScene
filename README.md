@@ -1,4 +1,4 @@
-# Inverse Rendering for Complex Indoor Scenes: Shape, Spatially-Varying Lighting and SVBRDF From a Single Image
+# Inverse Rendering for Complex Indoor Scenes: Shape, Spatially-Varying Lighting and SVBRDF From a Single Image ([Project page](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/))
 Zhengqin Li, Mohammad Shafiei, Ravi Ramamoorthi, Kalyan Sunkavalli, Manmohan Chandraker
 
 ## New Datasets 
@@ -54,6 +54,8 @@ Please remember fixing the data route in `runNYU.sh`, `CompareNormal.py` and `Co
 
 ## Train and test on Garon19 [2] dataset 
 There is no fine-tuning for the Garon19 dataset. To test the network, download the images from this [link](https://lvsn.github.io/fastindoorlight/). And then run `bash runReal20.sh`. Please remember fixing the data route in `runReal20.sh`.
+
+All object insertion results can be found from this [link](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/objectInsertion.zip). We will release our object insertion code soon. Please check out [project page](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/) for updates. 
 
 ## Differences from the original 
 The current implementation has 3 major differences from the original CVPR20 implementation.
