@@ -20,7 +20,7 @@ import scipy.io as io
 parser = argparse.ArgumentParser()
 # The locationi of training set
 parser.add_argument('--dataRoot', default=None, help='path to input images')
-parser.add_argument('--IIWRoot', default='/siggraphasia20dataset/IIW/iiw-dataset/data', help='path to the IIW dataset')
+parser.add_argument('--IIWRoot', default=None, help='path to the IIW dataset')
 parser.add_argument('--experimentBRDF', default=None, help='path to the model for BRDF prediction')
 parser.add_argument('--experiment', default=None, help='the path to store samples and models')
 # The basic training setting
