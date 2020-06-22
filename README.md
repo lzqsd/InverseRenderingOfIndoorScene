@@ -12,6 +12,9 @@ Scene editing applications results on real images are shown below, including res
 Models trained on the new dataset achieve comparable performances compared with our prior models. Quantitaive comparisons are listed below. [Li20] represents our prior models trained on SUNCG-related dataset. 
 ![](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/github/quantitative.png)
 
+## Download the trained models
+The trained models can be downloaded from the [link](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/models.zip). To test the models, please copy the models to the same directory as the code. 
+
 ## Train and test on the synthetic dataset
 
 ## Train and test on IIW dataset
@@ -19,6 +22,8 @@ Models trained on the new dataset achieve comparable performances compared with 
 ## Train and test on NYU dataset
 
 ## Train and test on Garon19 [2] dataset 
+
+## Differences from the original 
 
 ## Reference 
 [1] Dai, A., Chang, A. X., Savva, M., Halber, M., Funkhouser, T., & Nießner, M. (2017). Scannet: Richly-annotated 3d reconstructions of indoor scenes. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 5828-5839).
