@@ -10,4 +10,4 @@ Scene editing applications results on real images are shown below, including res
 ![](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/github/objectInsertion.png)
 ![](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/github/materialEditing.png)
 Models trained on the new dataset achieve comparable performances compared with our prior models. Quantitaive comparisons are listed below. [Li20] represents our prior models trained on SUNCG-related dataset. 
-
+![](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/github/quantitative.png)
