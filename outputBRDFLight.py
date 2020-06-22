@@ -12,14 +12,14 @@ import dataLoader
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import torch.nn.functional as F
-import wrapperBRDFLight as wcg 
-import os.path as osp 
+import wrapperBRDFLight as wcg
+import os.path as osp
 
 parser = argparse.ArgumentParser()
 # The locationi of training set
-parser.add_argument('--dataRoot', default='/eccv20dataset/DatasetNew_test/', help='path to input images')
+parser.add_argument('--dataRoot', default=None, help='path to input images')
 parser.add_argument('--experimentBRDF', default=None, help='path to the model for BRDF prediction')
-parser.add_argument('--experimentLight', default=None, help='path to the model for light prediction') 
+parser.add_argument('--experimentLight', default=None, help='path to the model for light prediction')
 parser.add_argument('--mode', default='train', help='run training set or testing set' )
 # The basic training setting
 parser.add_argument('--nepochBRDF', type=int, default=14, help='the number of epochs for BRDF prediction')
@@ -33,7 +33,7 @@ parser.add_argument('--envRow', type=int, default=120, help='the number of sampl
 parser.add_argument('--envCol', type=int, default=160, help='the number of samples of envmaps in x direction')
 parser.add_argument('--envHeight', type=int, default=8, help='the size of envmaps in y direction')
 parser.add_argument('--envWidth', type=int, default=16, help='the size of envmaps in x direction')
-parser.add_argument('--SGNum', type=int, default=12, help='the number of spherical Gaussian lobe' ) 
+parser.add_argument('--SGNum', type=int, default=12, help='the number of spherical Gaussian lobe' )
 parser.add_argument('--offset', type=float, default=1.0, help='the offset for training lighting prediction')
 
 parser.add_argument('--cuda', action='store_true', help='enables cuda')
@@ -54,7 +54,7 @@ if opt.experimentLight is None:
 
 if opt.experimentBRDF is None:
     opt.experimentBRDF = 'check_cascade%d_w%d_h%d' \
-            % (opt.cascadeLevel, opt.imWidth, opt.imHeight ) 
+            % (opt.cascadeLevel, opt.imWidth, opt.imHeight )
 
 opt.experimentLight = osp.join(curDir, opt.experimentLight )
 opt.experimentBRDF = osp.join(curDir, opt.experimentBRDF )
@@ -75,7 +75,7 @@ normalDecoder = models.decoder0(mode=1 )
 roughDecoder = models.decoder0(mode=2 )
 depthDecoder = models.decoder0(mode=4 )
 
-lightEncoder = models.encoderLight(cascadeLevel = opt.cascadeLevel, 
+lightEncoder = models.encoderLight(cascadeLevel = opt.cascadeLevel,
         SGNum = opt.SGNum )
 axisDecoder = models.decoderLight(mode=0, SGNum = opt.SGNum )
 lambDecoder = models.decoderLight(mode = 1, SGNum = opt.SGNum )
@@ -278,7 +278,7 @@ for i, dataBatch in enumerate(brdfLoader):
         if not osp.isfile(depthNameBatch[n] ):
             print(depthNameBatch[n] )
             utils.writeH5ToFile(depthPred[n:n+1, :], depthNameBatch[n:n+1] )
-    
+
     for n in range(0, diffusePred.size(0) ):
         if not osp.isfile(diffusePreNameBatch[n] ):
             print(diffusePreNameBatch[n] )
@@ -286,7 +286,7 @@ for i, dataBatch in enumerate(brdfLoader):
                     diffusePreNameBatch[n:n+1] )
 
     for n in range(0, specularPred.size(0) ):
-        if not osp.isfile(specularPreNameBatch[n] ): 
+        if not osp.isfile(specularPreNameBatch[n] ):
             print(specularPreNameBatch[n] )
             utils.writeH5ToFile(specularPred[n:n+1, :],
                     specularPreNameBatch[n:n+1] )

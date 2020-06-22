@@ -47,7 +47,7 @@ parser.add_argument('--deviceIds', type=int, nargs='+', default=[0, 1, 2], help=
 parser.add_argument('--reconstWeight', type=float, default=10, help='the weight for reconstruction error' )
 parser.add_argument('--renderWeight', type=float, default=1.0, help='the weight for the rendering' )
 # Cascae Level
-parser.add_argument('--cascadeLevel', type=int, default=1, help='the casacade level')
+parser.add_argument('--cascadeLevel', type=int, default=0, help='the casacade level')
 
 # The detail network setting
 opt = parser.parse_args()
