@@ -17,7 +17,7 @@ The trained models can be downloaded from the [link](http://cseweb.ucsd.edu/~vis
 
 ## Train and test on the synthetic dataset
 To train the full models on the synthetic dataset, please run the following commands.
-* `python trainBRDF.py --cascadeLevel 0 --dataRoot DATA`: 
+* `python trainBRDF.py --cascadeLevel 0 --dataRoot DATA`: Train the first cascade of MGNet. Set `DATA` to the data directory.
 * ``
 * ``
 *
