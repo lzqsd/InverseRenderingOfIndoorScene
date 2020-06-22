@@ -16,6 +16,12 @@ Models trained on the new dataset achieve comparable performances compared with 
 The trained models can be downloaded from the [link](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/models.zip). To test the models, please copy the models to the same directory as the code and run the commands as shown below. 
 
 ## Train and test on the synthetic dataset
+To train the full models on the synthetic dataset, please run the following commands:
+* ``
+* ``
+* ``
+*
+To test the full models, pleas
 
 ## Train and test on IIW dataset
 
@@ -24,6 +30,9 @@ The trained models can be downloaded from the [link](http://cseweb.ucsd.edu/~vis
 ## Train and test on Garon19 [2] dataset 
 
 ## Differences from the original 
+The current implementation has 2 major differences from the original CVPR20 implementation.
+* In the new models, we do not use spherical Gaussian parameters generated from optimization for supervision. That is mainly because the optimization proceess is time consuming and we have not finished that process yet. We will update the code once it is done.
+* The resolution of the second cascade is changed from 480x640 to 240x320. We find that the networks can generate smoother results with smaller resolution.
 
 ## Reference 
 [1] Dai, A., Chang, A. X., Savva, M., Halber, M., Funkhouser, T., & Nießner, M. (2017). Scannet: Richly-annotated 3d reconstructions of indoor scenes. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 5828-5839).
