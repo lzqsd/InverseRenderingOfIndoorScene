@@ -37,7 +37,8 @@ To train on the IIW dataset, please first train on the synthetic dataset and the
 To test the network on the IIW dataset, please run the commands
 * `bash runIIW.sh`: Output the predictions for the IIW dataset.
 * `python CompareWHDR.py`: Compute the WHDR on the predictions.
-Please fix the data route in `runIIW.sh` and `CompareWHDR.py`. 
+
+Please fixing the data route in `runIIW.sh` and `CompareWHDR.py`. 
 
 ## Train and test on NYU dataset
 To train on the BYU dataset, please first train on the synthetic dataset and then run the commands:
@@ -48,9 +49,11 @@ To test the network on the NYU dataset, please run the commands
 * `bash runNYU.sh`: Output the predictions for the NYU dataset.
 * `python CompareNormal.py`: Compute the normal error on the predictions.
 * `python CompareDepth.py`: Compute the depth error on the predictions.
-Please remember fix the data route in `runNYU.sh`, `CompareNormal.py` and `CompareDepth.py`.
+
+Please remember fixing the data route in `runNYU.sh`, `CompareNormal.py` and `CompareDepth.py`.
 
 ## Train and test on Garon19 [2] dataset 
+There is no fine-tuning for the Garon19 dataset. To test the network, download the images from this [link](https://lvsn.github.io/fastindoorlight/). And then run `bash runReal20.sh`. Please remember fixing the data route in `runReal20.sh`.
 
 ## Differences from the original 
 The current implementation has 3 major differences from the original CVPR20 implementation.
