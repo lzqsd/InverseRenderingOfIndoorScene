@@ -1,4 +1,5 @@
-# Inverse Rendering for Complex Indoor Scenes: Shape, Spatially-Varying Lighting and SVBRDF From a Single Image ([Project page](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/))
+# Inverse Rendering for Complex Indoor Scenes: 
+# Shape, Spatially-Varying Lighting and SVBRDF From a Single Image ([Project page](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/))
 Zhengqin Li, Mohammad Shafiei, Ravi Ramamoorthi, Kalyan Sunkavalli, Manmohan Chandraker
 
 ## New Datasets 
