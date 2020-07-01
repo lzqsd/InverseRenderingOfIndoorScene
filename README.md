@@ -63,7 +63,7 @@ Please remember fixing the data route in `runNYU.sh`, `CompareNormal.py` and `Co
 ## Train and test on Garon19 [2] dataset for object insertion
 There is no fine-tuning for the Garon19 dataset. To test the network, download the images from this [link](https://lvsn.github.io/fastindoorlight/). And then run `bash runReal20.sh`. Please remember fixing the data route in `runReal20.sh`.
 
-All object insertion results and comparisons can be found from this [link](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/objectInsertion.zip). The code to run object insertion can be found from this [link](https://github.com/lzqsd/VirtualObjectInsertion). 
+All object insertion results and comparisons with prior works can be found from this [link](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/objectInsertion.zip). The code to run object insertion can be found from this [link](https://github.com/lzqsd/VirtualObjectInsertion). 
 
 ## Differences from the original paper
 The current implementation has 3 major differences from the original CVPR20 implementation.
