@@ -3,6 +3,7 @@ Zhengqin Li, Mohammad Shafiei, Ravi Ramamoorthi, Kalyan Sunkavalli, Manmohan Cha
 
 ## Useful links:
 * Project page: http://cseweb.ucsd.edu/~visco…/projects/CVPR20InverseIndoor/
+* Trained models: http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/models.zip
 * Renderer: https://github.com/lzqsd/OptixRenderer
 * Object insertion: https://github.com/lzqsd/VirtualObjectInsertion
 * Tileable texture synthesis: https://github.com/lzqsd/TileableTextureSynthesis
