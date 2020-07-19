@@ -8,6 +8,7 @@ Zhengqin Li, Mohammad Shafiei, Ravi Ramamoorthi, Kalyan Sunkavalli, Manmohan Cha
 * Object insertion: https://github.com/lzqsd/VirtualObjectInsertion
 * Tileable texture synthesis: https://github.com/lzqsd/TileableTextureSynthesis
 * Spherical gaussian optimization: https://github.com/lzqsd/SphericalGaussianOptimization
+* Dataset: https://ucsd-openrooms.github.io/ 
 
 ## Results on our new dataset 
 This is the official code release of paper [Inverse Rendering for Complex Indoor Scenes: Shape, Spatially-Varying Lighting and SVBRDF From a Single Image](https://drive.google.com/file/d/18zG1kzVpL9XsEVBK95hbpnB-FMlChRXP/view). The original models were trained by extending the SUNCG dataset with an SVBRDF-mapping. Since SUNCG is not available now due to copyright issues, we are not able to release the original models. Instead, we rebuilt a new high-quality synthetic indoor scene dataset and trained our models on it. We will release the new dataset in the near future. The geometry configurations of the new dataset are based on  ScanNet [1], which is a large-scale repository of 3D scans of real indoor scenes. Some example images can be found below. A video is at this [link](http://cseweb.ucsd.edu/~viscomp/projects/CVPR20InverseIndoor/github/dataset.mp4)
