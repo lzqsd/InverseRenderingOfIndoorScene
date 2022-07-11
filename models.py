@@ -477,7 +477,7 @@ class renderingLayer():
         ldirections = self.ls.unsqueeze(0).unsqueeze(-1).unsqueeze(-1)
         camyProj = torch.einsum('b,abcd->acd',(self.up, normalPred)).unsqueeze(1).expand_as(normalPred) * normalPred
         camy = F.normalize(self.up.unsqueeze(0).unsqueeze(-1).unsqueeze(-1).expand_as(camyProj) - camyProj, dim=1)
-        camx = -F.normalize(torch.cross(camy, normalPred,dim=1), p=1, dim=1)
+        camx = -F.normalize(torch.cross(camy, normalPred,dim=1), dim=1)
 
         l = ldirections[:, :, 0:1, :, :] * camx.unsqueeze(1) \
                 + ldirections[:, :, 1:2, :, :] * camy.unsqueeze(1) \
