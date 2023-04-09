@@ -73,11 +73,13 @@ class BatchLoader(Dataset):
 
         # BRDF parameter
         self.albedoList = [x.replace('im_', 'imbaseColor_').replace('hdr', 'png') for x in self.imList ] 
+        self.albedoList = [x.replace('DiffLight', '') for x in self.albedoList]
 
         self.normalList = [x.replace('im_', 'imnormal_').replace('hdr', 'png') for x in self.imList ]
         self.normalList = [x.replace('DiffLight', '') for x in self.normalList ]
 
         self.roughList = [x.replace('im_', 'imroughness_').replace('hdr', 'png') for x in self.imList ]
+        self.roughList = [x.replace('DiffLight', '') for x in self.roughList]
 
         self.depthList = [x.replace('im_', 'imdepth_').replace('hdr', 'dat') for x in self.imList ]
         self.depthList = [x.replace('DiffLight', '') for x in self.depthList ]
